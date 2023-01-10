@@ -9,7 +9,11 @@ fn main() {
     // Generate a random string of length n
     let mut new_password = String::new();
     for _ in 0..new_password_length {
-        new_password.push(allowed_chars.chars().nth(rand::random::<usize>() % allowed_chars.len()).unwrap());
+        new_password.push(
+            allowed_chars.chars()
+                .nth(rand::random::<usize>() % allowed_chars.len())
+                .unwrap()
+        );
     }
 
     // Print the new password
