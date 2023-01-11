@@ -18,8 +18,7 @@ output: `EYbRUSTiPASS*2ISl{?M&<\[COOL0eVw` <- note the excluded characters are n
 # How to install/use for Windows:
 
 1. Download Windows binary, it may be helpful to simply rename it to "rustpass.exe"  to keep
-   commands shorter. (Make sure to add .exe, this won't need to be typed to execute the file from the CLI, but it is
-   required for Windows to recognize the binary)
+   commands shorter.
 2. Move the file to your `C:\Users\[Username]` directory
 3. Opening the console *without* Administrator privileges will put you in the directory mentioned above by default
 4. Now type `rustpass [number of characters]` (Ex. `rustpass 64`) to generate a new password!
