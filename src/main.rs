@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::env;
 
 use rand::RngCore;
@@ -20,15 +21,17 @@ fn main() {
     // Disallowed_chars is an optional argument
     let disallowed_chars: Option<&String> = args.get(2);
 
-    let mut allowed_chars: String = String::from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=`~!@#$%^&*()_+[]\\{}|;':,./<>?");
+    let allowed_chars: String = String::from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=`~!@#$%^&*()_+[]\\{}|;':,./<>?");
+
+    let mut allowed_chars_set: HashSet<char> = allowed_chars.chars().collect();
 
     // Remove disallowed characters from allowed_characters if disallowed_chars is specified
     if let Some(disallowed_chars) = disallowed_chars {
         for disallowed_char in disallowed_chars.chars() {
-            allowed_chars = allowed_chars.replace(disallowed_char, "");
+            allowed_chars_set.remove(&disallowed_char);
         }
 
-        if allowed_chars.len() == 0 { // Make sure there are still characters left to use
+        if allowed_chars_set.len() == 0 { // Make sure there are still characters left to use
             println!("Error: You have disallowed all characters");
             println!("The allowed character set includes: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=`~!@#$%^&*()_+[]\\{{}}|;':,./<>?");
             return;
