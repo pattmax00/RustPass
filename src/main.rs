@@ -1,5 +1,7 @@
 use std::env;
 
+use rand::RngCore;
+
 fn main() {
     // Take in two command line arguments, one i32 and one optional String
     let args: Vec<String> = env::args().collect();
@@ -34,12 +36,13 @@ fn main() {
     }
 
     if let Some(new_password_length) = new_password_length { // Unwrap Option in i32
+        let mut rng = rand::thread_rng();
         // Generate a random string of length n
         let mut new_password = String::new();
         for _ in 0..new_password_length {
             new_password.push(
                 allowed_chars.chars()
-                    .nth(rand::random::<usize>() % allowed_chars.len())
+                    .nth(rng.next_u32() as usize % allowed_chars.len())
                     .unwrap()
             );
         }
