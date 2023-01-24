@@ -44,9 +44,9 @@ fn main() {
         let mut new_password = String::new();
         for _ in 0..new_password_length {
             new_password.push(
-                allowed_chars.chars()
-                    .nth(rng.next_u32() as usize % allowed_chars.len())
-                    .unwrap()
+                *allowed_chars_set.iter()
+                    .nth(rng.next_u32() as usize % allowed_chars_set.len())
+                    .expect("Error: Invalid index")
             );
         }
 
